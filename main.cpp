@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include<bits/stdc++.h>
+#include<stdio.h>
 class Automobil{
    public:
         Automobil(std::string tip, std::string nume,int capacitate,
@@ -34,6 +35,11 @@ class Autoturism:public Automobil
 {
 
 };
+float round(float var)
+{
+    float value = (int)(var * 100 + .5);
+    return (float)value / 100;
+}
 int main()
 {
     int comanda,nr_automobile,i;
@@ -63,11 +69,29 @@ int main()
         }
     case 2:
         {
-
+            int nr_persoane;
+            std::cin>>nr_persoane;
+            int nr_necesar_de_masini;
+            for(i=0;i<nr_automobile;i++)
+            {
+                nr_necesar_de_masini = nr_persoane/p_automobil[i]->Getcapacitate();
+                if(nr_necesar_de_masini*p_automobil[i]->Getcapacitate()!=nr_persoane)
+                    nr_necesar_de_masini++;
+                std::cout<<p_automobil[i]->Getnume()<<std::endl;
+                std::cout<<nr_necesar_de_masini<<std::endl;
+            }
         }
     case 3:
         {
-
+            float distanta,durata;
+            std::cin>>distanta>>durata;
+            for(i=0;i<nr_automobile;i++)
+            {
+                durata = distanta/p_automobil[i]->Getviteza_medie();
+                std::cout<<p_automobil[i]->Getnume()<<std::endl;
+                //std::cout<<round(durata)<<std::endl;
+                printf("%.2f\n",durata);
+            }
         }
     case 4:
         {
